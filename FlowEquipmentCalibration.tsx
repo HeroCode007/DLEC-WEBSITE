@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Waves, CheckCircle, Clock, Award, ArrowRight, Phone, Droplets } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -57,6 +58,14 @@ const FlowEquipmentCalibration = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Flow Meter & Fluid Equipment Calibration Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="Expert flow meter calibration services in Lahore, Pakistan. Fast on-site and in-lab water and fluid sensor calibration by DLEC."
+        />
+        <link rel="canonical" href="https://dlec.com/services/flow-equipment-calibration" />
+      </Helmet>
       {/* Hero Section */}
       <motion.section
         className="bg-gradient-to-br from-blue-50 to-white py-20"

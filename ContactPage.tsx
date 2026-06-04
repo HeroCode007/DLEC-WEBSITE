@@ -19,11 +19,12 @@ const ContactPage = () => {
   return (
     <div className="pt-16">
       <Helmet>
-        <title>Contact Us | DLEC Calibration</title>
+        <title>Contact DLEC Calibration Lahore | Request a Free Quote</title>
         <meta
           name="description"
-          content="Request a quote or contact Direct Line Engineering Corporation for precision calibration services across Pakistan."
+          content="Contact DLEC at our Lahore office on College Road to schedule on-site or laboratory calibration services. Phone: 0321-4182021. Fast, traceable calibration services."
         />
+        <link rel="canonical" href="https://dlec.com/contact" />
       </Helmet>
 
       {/* Hero Section */}

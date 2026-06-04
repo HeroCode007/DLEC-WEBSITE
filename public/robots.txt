@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin/certificates
+
+Sitemap: https://dlec.com/sitemap.xml

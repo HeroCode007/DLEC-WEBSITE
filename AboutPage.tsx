@@ -1,5 +1,6 @@
 import { CheckCircle, RefreshCw, CalendarCheck2, PhoneCall, ClipboardList, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 
 const features = [
   {
@@ -53,12 +54,21 @@ const cardVariants = {
 
 const CustomerCentricApproach = () => {
   return (
-    <motion.section 
-      className="pt-32 pb-20 bg-gray-50"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
+    <>
+      <Helmet>
+        <title>About DLEC | Leading Calibration Company in Lahore, Pakistan</title>
+        <meta
+          name="description"
+          content="Direct Line Engineering Corporation (DLEC) is a premier proactive calibration vendor in Lahore. Serving industrial and laboratory clients across Pakistan with traceable, certified testing."
+        />
+        <link rel="canonical" href="https://dlec.com/about" />
+      </Helmet>
+      <motion.section 
+        className="pt-32 pb-20 bg-gray-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -128,7 +138,8 @@ const CustomerCentricApproach = () => {
           </motion.ul>
         </motion.div>
       </div>
-    </motion.section>
+      </motion.section>
+    </>
   );
 };
 

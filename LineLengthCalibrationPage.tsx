@@ -1,3 +1,5 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Ruler } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -5,6 +7,14 @@ import { motion } from 'framer-motion';
 const LineLengthCalibrationPage = () => {
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Line Length & Dimensional Calibration in Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="Precise dimensional calibration in Lahore for micrometers, vernier calipers, rulers, tape measures, and height gauges by DLEC. High-accuracy measurement assurance."
+        />
+        <link rel="canonical" href="https://dlec.com/services/line-length-dimensions-calibration" />
+      </Helmet>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 to-white py-20">

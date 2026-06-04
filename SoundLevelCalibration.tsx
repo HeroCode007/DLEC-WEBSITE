@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Volume2, CheckCircle, Clock, Award, ArrowRight, Phone, Shield } from 'lucide-react';
 
@@ -45,6 +46,14 @@ const SoundLevelCalibration = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Sound & Noise Level Meter Calibration Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="Professional sound and noise meter calibration in Lahore. Ensure occupational safety and pak-EPA environmental noise regulations compliance with DLEC."
+        />
+        <link rel="canonical" href="https://dlec.com/services/sound-level-calibration" />
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-orange-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Lightbulb, CheckCircle, Clock, Award, ArrowRight, Phone, Eye } from 'lucide-react';
 
@@ -52,6 +53,14 @@ const LightLuxCalibration = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Light & Lux Meter Calibration Services in Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="Certified lux meter and light sensor calibration in Lahore. Precise photometric and illuminance testing for safety and quality compliance by DLEC."
+        />
+        <link rel="canonical" href="https://dlec.com/services/light-lux-calibration" />
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-yellow-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

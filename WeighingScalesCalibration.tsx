@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Scale, CheckCircle, Clock, Award, ArrowRight, Phone } from 'lucide-react';
 
@@ -35,6 +36,14 @@ const WeighingScalesCalibration = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Weighing & Scales Calibration Services in Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="ISO certified industrial scale & laboratory balance calibration in Lahore. Fast, traceable weights and balances testing to ensure measurement accuracy."
+        />
+        <link rel="canonical" href="https://dlec.com/services/weighing-scales-calibration" />
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-purple-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Gauge, CheckCircle, Clock, Award, ArrowRight, Phone } from 'lucide-react';
 
@@ -35,6 +36,14 @@ const PressureCalibration = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Pressure Gauge Calibration Services in Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="Traceable pressure & manometer calibration services in Lahore, Pakistan. Maintain accuracy in industrial operations with fast turnaround by DLEC."
+        />
+        <link rel="canonical" href="https://dlec.com/services/pressure-calibration" />
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

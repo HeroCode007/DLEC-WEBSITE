@@ -1,62 +1,103 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ScrollToTop from './components/scroll';
-import Intro from './components/Intro'; // ✅ Import the Intro
+import Header from './Header';
+import Footer from './Footer';
+import ScrollToTop from './scroll';
+import Intro from './Intro'; // ✅ Import the Intro
+import { AuthProvider } from './AuthContext';
+import ProtectedRoute from './ProtectedRoute';
 
 // Page imports...
-import HomePage from './pages/HomePage';
-import TemperatureCalibration from './pages/services/TemperatureCalibration';
-import LineLengthCalibration from './pages/services/LineLengthCalibration';
-import WeighingScalesCalibration from './pages/services/WeighingScalesCalibration';
-import SoundLevelCalibration from './pages/services/SoundLevelCalibration';
-import LightLuxCalibration from './pages/services/LightLuxCalibration';
-import FlowEquipmentCalibration from './pages/services/FlowEquipmentCalibration';
-import ElectricalTestCalibration from './pages/services/ElectricalTestCalibration';
-import ForceCalibration from './pages/services/ForceCalibration';
-import ConstructionCalibration from './pages/services/ConstructionCalibration';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
+import HomePage from './HomePage';
+import TemperatureCalibration from './TemperatureCalibration';
+import LineLengthCalibration from './LineLengthCalibration';
+import WeighingScalesCalibration from './WeighingScalesCalibration';
+import SoundLevelCalibration from './SoundLevelCalibration';
+import LightLuxCalibration from './LightLuxCalibration';
+import FlowEquipmentCalibration from './FlowEquipmentCalibration';
+import ElectricalTestCalibration from './ElectricalTestCalibration';
+import ForceCalibration from './ForceCalibration';
+import ConstructionCalibration from './ConstructionCalibration';
+import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
 
-import LineLengthCalibrationPage from './pages/services/LineLengthCalibrationPage';
+import LineLengthCalibrationPage from './LineLengthCalibrationPage';
+import CertificateValidationPage from './CertificateValidationPage';
+import AdminCertificatesDashboard from './AdminCertificatesDashboard';
+import AdminLoginPage from './AdminLoginPage';
 
 
 
 // Inside your <Routes>:
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => {
+    // Check if intro has already been shown in this session
+    const introShown = sessionStorage.getItem('dlec_intro_shown');
+    return !introShown; // Show intro only if not shown yet
+  });
+
+  const handleIntroFinish = () => {
+    // Mark intro as shown for this session
+    sessionStorage.setItem('dlec_intro_shown', 'true');
+    setShowIntro(false);
+  };
 
   return (
-    <Router>
-      <ScrollToTop />
-      {showIntro ? (
-        <Intro onFinish={() => setShowIntro(false)} />
-      ) : (
-        <div className="min-h-screen bg-white">
-          <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services/temperature-calibration" element={<TemperatureCalibration />} />
-            <Route path="/services/line-length-calibration" element={<LineLengthCalibration />} />
-            <Route path="/services/weighing-scales-calibration" element={<WeighingScalesCalibration />} />
-            <Route path="/services/sound-level-calibration" element={<SoundLevelCalibration />} />
-            <Route path="/services/light-lux-calibration" element={<LightLuxCalibration />} />
-            <Route path="/services/flow-equipment-calibration" element={<FlowEquipmentCalibration />} />
-            <Route path="/services/electrical-test-calibration" element={<ElectricalTestCalibration />} />
-            <Route path="/services/force-calibration" element={<ForceCalibration />} />
-            <Route path="/services/construction-calibration" element={<ConstructionCalibration />} />
-            <Route path="/services/line-length-dimensions-calibration" element={<LineLengthCalibrationPage />} />
+    <AuthProvider>
+      <Router>
+        <ScrollToTop />
+        {showIntro ? (
+          <Intro onFinish={() => handleIntroFinish()} />
+        ) : (
+          <div className="min-h-screen bg-white">
+            <Routes>
+              {/* Admin login — no Header/Footer */}
+              <Route path="/admin/login" element={<AdminLoginPage />} />
 
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+              {/* Admin dashboard — protected, no Header/Footer */}
+              <Route
+                path="/admin/certificates"
+                element={
+                  <ProtectedRoute>
+                    <AdminCertificatesDashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-          </Routes>
-          <Footer />
-        </div>
-      )}
-    </Router>
+              {/* Public routes — with Header/Footer */}
+              <Route
+                path="*"
+                element={
+                  <>
+                    <Header />
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/services/temperature-calibration" element={<TemperatureCalibration />} />
+                      <Route path="/services/line-length-calibration" element={<LineLengthCalibration />} />
+                      <Route path="/services/weighing-scales-calibration" element={<WeighingScalesCalibration />} />
+                      <Route path="/services/sound-level-calibration" element={<SoundLevelCalibration />} />
+                      <Route path="/services/light-lux-calibration" element={<LightLuxCalibration />} />
+                      <Route path="/services/flow-equipment-calibration" element={<FlowEquipmentCalibration />} />
+                      <Route path="/services/electrical-test-calibration" element={<ElectricalTestCalibration />} />
+                      <Route path="/services/force-calibration" element={<ForceCalibration />} />
+                      <Route path="/services/construction-calibration" element={<ConstructionCalibration />} />
+                      <Route path="/services/line-length-dimensions-calibration" element={<LineLengthCalibrationPage />} />
+
+                      <Route path="/verify-certificate" element={<CertificateValidationPage />} />
+
+                      <Route path="/about" element={<AboutPage />} />
+                      <Route path="/contact" element={<ContactPage />} />
+                    </Routes>
+                    <Footer />
+                  </>
+                }
+              />
+            </Routes>
+          </div>
+        )}
+      </Router>
+    </AuthProvider>
   );
 }
 

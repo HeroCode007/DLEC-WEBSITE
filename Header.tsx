@@ -125,6 +125,9 @@ const Header = () => {
             <Link to="/about" className={isActive('/about') ? 'text-blue-700 font-semibold' : 'text-gray-700 hover:text-blue-700'}>
               About
             </Link>
+            <Link to="/verify-certificate" className={isActive('/verify-certificate') ? 'text-blue-700 font-semibold' : 'text-gray-700 hover:text-blue-700'}>
+              Verify Certificate
+            </Link>
             <Link to="/contact" className={isActive('/contact') ? 'text-blue-700 font-semibold' : 'text-gray-700 hover:text-blue-700'}>
               Contact
             </Link>
@@ -167,6 +170,9 @@ const Header = () => {
               </div>
               <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block py-2 text-gray-700 hover:text-blue-700">
                 About
+              </Link>
+              <Link to="/verify-certificate" onClick={() => setIsMenuOpen(false)} className="block py-2 text-gray-700 hover:text-blue-700">
+                Verify Certificate
               </Link>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block py-2 text-gray-700 hover:text-blue-700">
                 Contact

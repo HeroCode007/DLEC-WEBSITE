@@ -1,0 +1,2197 @@
+[
+  {
+    "id": "1",
+    "Certificate #": "DLEC/CAL/01778",
+    "equipmentType": "INCUBATOR (65oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-078",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 35.5,
+        "observedValue": 35,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": 36.5,
+        "observedValue": 36,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": 37.5,
+        "observedValue": 37,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": 38.5,
+        "observedValue": 38,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": 39.5,
+        "observedValue": 39,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": 40.5,
+        "observedValue": 40,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": 45.5,
+        "observedValue": 45,
+        "deviationValue": 0.5
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "2",
+    "Certificate #": "DLEC/CAL/01779",
+    "equipmentType": "pH METER",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-079",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "pH Meter has been calibrated with standard pH4 buffer solution 32095.297 Lot # 24G294104 VWR BELGIUM",
+    "manufacturer": "HANNA",
+    "srNo": "J-0087777",
+    "code": "MISC-009",
+    "calibrationData": [
+      {
+        "standardValue": 4.01,
+        "observedValue": 4,
+        "deviationValue": 0.009999999999999787
+      },
+      {
+        "standardValue": 7.01,
+        "observedValue": 7,
+        "deviationValue": 0.009999999999999787
+      },
+      {
+        "standardValue": 10.01,
+        "observedValue": 10,
+        "deviationValue": 0.009999999999999787
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "3",
+    "Certificate #": "DLEC/CAL/01780",
+    "equipmentType": "MOISTURE ANALYZER (110gram)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-080",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard dead weight set OHAUS/F2 series 1307",
+    "manufacturer": "A&E LAB",
+    "srNo": "20180 1067",
+    "code": "WT-006",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50.001,
+        "deviationValue": -0.0009999999999976694
+      },
+      {
+        "standardValue": 70,
+        "observedValue": 70.001,
+        "deviationValue": -0.0010000000000047748
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100.001,
+        "deviationValue": -0.0010000000000047748
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "4",
+    "Certificate #": "DLEC/CAL/01781",
+    "equipmentType": "WATER BATH (20~90oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-081",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 49.9,
+        "observedValue": 50,
+        "deviationValue": -0.10000000000000142
+      },
+      {
+        "standardValue": 59.9,
+        "observedValue": 60,
+        "deviationValue": -0.10000000000000142
+      },
+      {
+        "standardValue": 69.8,
+        "observedValue": 70,
+        "deviationValue": -0.20000000000000284
+      },
+      {
+        "standardValue": 79.8,
+        "observedValue": 80,
+        "deviationValue": -0.20000000000000284
+      },
+      {
+        "standardValue": 89.7,
+        "observedValue": 90,
+        "deviationValue": -0.29999999999999716
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "5",
+    "Certificate #": "DLEC/CAL/01782",
+    "equipmentType": "PIPETTE (10ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-082",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "HBG GERMANY",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 3,
+        "observedValue": 3,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 4,
+        "observedValue": 4,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 6,
+        "observedValue": 6,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 7,
+        "observedValue": 7,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 8,
+        "observedValue": 8,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 9,
+        "observedValue": 9,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "6",
+    "Certificate #": "DLEC/CAL/01783",
+    "equipmentType": "PIPETTE (1ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-083",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "PYREX",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 0.1,
+        "observedValue": 0.1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.2,
+        "observedValue": 0.2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.3,
+        "observedValue": 0.3,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.4,
+        "observedValue": 0.4,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.5,
+        "observedValue": 0.5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.6,
+        "observedValue": 0.6,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.7,
+        "observedValue": 0.7,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.8,
+        "observedValue": 0.8,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.9,
+        "observedValue": 0.9,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "7",
+    "Certificate #": "DLEC/CAL/01784",
+    "equipmentType": "PIPETTE (10.96ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-084",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "HBG GERMANY",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 3,
+        "observedValue": 3,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 4,
+        "observedValue": 4,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 6,
+        "observedValue": 6,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 7,
+        "observedValue": 7,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 8,
+        "observedValue": 8,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 9,
+        "observedValue": 9,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10.96,
+        "observedValue": 10.96,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "8",
+    "Certificate #": "DLEC/CAL/01785",
+    "equipmentType": "PIPETTE (20ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-085",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "HBG",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 4,
+        "observedValue": 4,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 6,
+        "observedValue": 6,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 8,
+        "observedValue": 8,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 12,
+        "observedValue": 12,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 14,
+        "observedValue": 14,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 16,
+        "observedValue": 16,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 18,
+        "observedValue": 18,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "9",
+    "Certificate #": "DLEC/CAL/01786",
+    "equipmentType": "BUTYRO METER (40%)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-086",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated by direct comparison method with",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 15,
+        "observedValue": 15,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 25,
+        "observedValue": 25,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 35,
+        "observedValue": 35,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "10",
+    "Certificate #": "DLEC/CAL/01787",
+    "equipmentType": "BUTYRO METER (70%)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-087",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated by direct comparison method with",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 60,
+        "observedValue": 60,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 70,
+        "observedValue": 70,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "11",
+    "Certificate #": "DLEC/CAL/01788",
+    "equipmentType": "BUTYRO METER FOR BUTTER (90%)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-088",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated by direct comparison method with",
+    "manufacturer": "HBG GERMANY",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 70,
+        "observedValue": 70,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 75,
+        "observedValue": 75,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 80,
+        "observedValue": 80,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 85,
+        "observedValue": 85,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 90,
+        "observedValue": 90,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "12",
+    "Certificate #": "DLEC/CAL/01789",
+    "equipmentType": "AUTO BURETTE (50ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-089",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "WITEG",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 15,
+        "observedValue": 15,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "13",
+    "Certificate #": "DLEC/CAL/01790",
+    "equipmentType": "VOLUMETRIC FLASK (1000ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-090",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "BOROSILICATE",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 1002,
+        "observedValue": 1000,
+        "deviationValue": 2
+      },
+      {
+        "standardValue": 1002,
+        "observedValue": 1000,
+        "deviationValue": 2
+      },
+      {
+        "standardValue": 1002,
+        "observedValue": 1000,
+        "deviationValue": 2
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "14",
+    "Certificate #": "DLEC/CAL/01791",
+    "equipmentType": "VOLUMETRIC FLASK (100ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-091",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "15",
+    "Certificate #": "DLEC/CAL/01792",
+    "equipmentType": "VOLUMETRIC FLASK (100ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-092",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "16",
+    "Certificate #": "DLEC/CAL/01793",
+    "equipmentType": "MEASURING CYLINDER (50ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-093",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "17",
+    "Certificate #": "DLEC/CAL/01794",
+    "equipmentType": "MEASURING CYLINDER (250ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-094",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "PYREX",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 150,
+        "observedValue": 150,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 200,
+        "observedValue": 200,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 250,
+        "observedValue": 250,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "18",
+    "Certificate #": "DLEC/CAL/01795",
+    "equipmentType": "GLASS THERMOMETER (110oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-095",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC + 2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "ZEAL ENGLAND",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 10.1,
+        "observedValue": 10,
+        "deviationValue": 0.09999999999999964
+      },
+      {
+        "standardValue": 20.1,
+        "observedValue": 20,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 30.1,
+        "observedValue": 30,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 40.1,
+        "observedValue": 40,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 50.1,
+        "observedValue": 50,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 60.1,
+        "observedValue": 60,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 70.2,
+        "observedValue": 70,
+        "deviationValue": 0.20000000000000284
+      },
+      {
+        "standardValue": 80.2,
+        "observedValue": 80,
+        "deviationValue": 0.20000000000000284
+      },
+      {
+        "standardValue": 90.2,
+        "observedValue": 90,
+        "deviationValue": 0.20000000000000284
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "19",
+    "Certificate #": "DLEC/CAL/01796",
+    "equipmentType": "GLASS THERMOMETER (110oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-096",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC + 2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 10.1,
+        "observedValue": 10,
+        "deviationValue": 0.09999999999999964
+      },
+      {
+        "standardValue": 20.1,
+        "observedValue": 20,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 30.1,
+        "observedValue": 30,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 40.1,
+        "observedValue": 40,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 50.1,
+        "observedValue": 50,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 60.1,
+        "observedValue": 60,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": 70.1,
+        "observedValue": 70,
+        "deviationValue": 0.09999999999999432
+      },
+      {
+        "standardValue": 80.1,
+        "observedValue": 80,
+        "deviationValue": 0.09999999999999432
+      },
+      {
+        "standardValue": 90.1,
+        "observedValue": 90,
+        "deviationValue": 0.09999999999999432
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "20",
+    "Certificate #": "DLEC/CAL/01797",
+    "equipmentType": "GLASS BEAKER (250ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-097",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "PYREX",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 49.9,
+        "observedValue": 50,
+        "deviationValue": -0.10000000000000142
+      },
+      {
+        "standardValue": 99.9,
+        "observedValue": 100,
+        "deviationValue": -0.09999999999999432
+      },
+      {
+        "standardValue": 149.9,
+        "observedValue": 150,
+        "deviationValue": -0.09999999999999432
+      },
+      {
+        "standardValue": 199.9,
+        "observedValue": 200,
+        "deviationValue": -0.09999999999999432
+      },
+      {
+        "standardValue": 249.9,
+        "observedValue": 250,
+        "deviationValue": -0.09999999999999432
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "21",
+    "Certificate #": "DLEC/CAL/01798",
+    "equipmentType": "GLASS BEAKER (500ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-098",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "PYREX",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 101,
+        "observedValue": 100,
+        "deviationValue": 1
+      },
+      {
+        "standardValue": 201,
+        "observedValue": 200,
+        "deviationValue": 1
+      },
+      {
+        "standardValue": 301,
+        "observedValue": 300,
+        "deviationValue": 1
+      },
+      {
+        "standardValue": 401,
+        "observedValue": 400,
+        "deviationValue": 1
+      },
+      {
+        "standardValue": 501,
+        "observedValue": 500,
+        "deviationValue": 1
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "22",
+    "Certificate #": "DLEC/CAL/01799",
+    "equipmentType": "GERBER MACHINE",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-099",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Tacho meter Sr. # S251505",
+    "manufacturer": "AL MADINA ENGINEERING",
+    "srNo": "NA",
+    "code": "MISC-009",
+    "calibrationData": [
+      {
+        "standardValue": 1103,
+        "observedValue": 1100,
+        "deviationValue": 3
+      },
+      {
+        "standardValue": 1102,
+        "observedValue": 1100,
+        "deviationValue": 2
+      },
+      {
+        "standardValue": 1103,
+        "observedValue": 1100,
+        "deviationValue": 3
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "23",
+    "Certificate #": "DLEC/CAL/01800",
+    "equipmentType": "TDS METER",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-100",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "TDS Meter has been calibrated with standard TDS solution HI7032 Lot # 8457 HANNA USA",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "MISC-009",
+    "calibrationData": [
+      {
+        "standardValue": 1382,
+        "observedValue": 1383,
+        "deviationValue": -1
+      },
+      {
+        "standardValue": 1382,
+        "observedValue": 1382,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1382,
+        "observedValue": 1382,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "24",
+    "Certificate #": "DLEC/CAL/01801",
+    "equipmentType": "IR THERMOMETER (-50~750oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-001",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "SMART SENSOR",
+    "srNo": "02348974",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 25,
+        "observedValue": 25.3,
+        "deviationValue": -0.3000000000000007
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50.3,
+        "deviationValue": -0.29999999999999716
+      },
+      {
+        "standardValue": 75,
+        "observedValue": 75.3,
+        "deviationValue": -0.29999999999999716
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100.4,
+        "deviationValue": -0.4000000000000057
+      },
+      {
+        "standardValue": 150,
+        "observedValue": 150.4,
+        "deviationValue": -0.4000000000000057
+      },
+      {
+        "standardValue": 200,
+        "observedValue": 200.4,
+        "deviationValue": -0.4000000000000057
+      },
+      {
+        "standardValue": 300,
+        "observedValue": 300.5,
+        "deviationValue": -0.5
+      },
+      {
+        "standardValue": 400,
+        "observedValue": 400.5,
+        "deviationValue": -0.5
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "25",
+    "Certificate #": "DLEC/CAL/01802",
+    "equipmentType": "HYDRO METER (15~40)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-002",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "The Hydrometer has been calibrated against standard Hydrometer conforming to ASTM standards",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "MISC-009",
+    "calibrationData": [
+      {
+        "standardValue": 15,
+        "observedValue": 15,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 25,
+        "observedValue": 25,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 35,
+        "observedValue": 35,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "26",
+    "Certificate #": "DLEC/CAL/01803",
+    "equipmentType": "HYDRO METER (15~40)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-003",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "The Hydrometer has been calibrated against standard Hydrometer conforming to ASTM standards",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "MISC-009",
+    "calibrationData": [
+      {
+        "standardValue": 15,
+        "observedValue": 15,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 25,
+        "observedValue": 25,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 35,
+        "observedValue": 35,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "27",
+    "Certificate #": "DLEC/CAL/01804",
+    "equipmentType": "DIGITAL WEIGHING SCALE (2000gram)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-004",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with reference dead weights traceable to",
+    "manufacturer": "AND GULF",
+    "srNo": "E309015029",
+    "code": "WT-006",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 4,
+        "observedValue": 4,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 6,
+        "observedValue": 6,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 200,
+        "observedValue": 200.5,
+        "deviationValue": -0.5
+      },
+      {
+        "standardValue": 400,
+        "observedValue": 400.5,
+        "deviationValue": -0.5
+      },
+      {
+        "standardValue": 500,
+        "observedValue": 500.5,
+        "deviationValue": -0.5
+      },
+      {
+        "standardValue": 1000,
+        "observedValue": 1000.5,
+        "deviationValue": -0.5
+      },
+      {
+        "standardValue": 1500,
+        "observedValue": 1500.5,
+        "deviationValue": -0.5
+      },
+      {
+        "standardValue": 2000,
+        "observedValue": 2000.5,
+        "deviationValue": -0.5
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "28",
+    "Certificate #": "DLEC/CAL/01805",
+    "equipmentType": "BURETTE (50ml)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-005",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "20oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard digitrate.",
+    "manufacturer": "AS",
+    "srNo": "NA",
+    "code": "GW-014",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 15,
+        "observedValue": 15,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 30,
+        "observedValue": 30,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 40,
+        "observedValue": 40,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "29",
+    "Certificate #": "DLEC/CAL/01806",
+    "equipmentType": "DEAD WEIGHT SET (500gram)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-006",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "QC LAB",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Dead Weight set has been calibrated with standard balance Sr. # 05456",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "WT-006",
+    "calibrationData": [
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 20,
+        "observedValue": 20,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 50,
+        "observedValue": 50,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 100,
+        "observedValue": 100,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 200,
+        "observedValue": 200,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "30",
+    "Certificate #": "DLEC/CAL/01807",
+    "equipmentType": "COLD STORE #1 (0~4oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-007",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 0.1,
+        "observedValue": 0,
+        "deviationValue": 0.1
+      },
+      {
+        "standardValue": 1.1,
+        "observedValue": 1,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 2.1,
+        "observedValue": 2,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 3.1,
+        "observedValue": 3,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 4.1,
+        "observedValue": 4,
+        "deviationValue": 0.09999999999999964
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "31",
+    "Certificate #": "DLEC/CAL/01808",
+    "equipmentType": "COLD STORE #2 (0~4oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-008",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 0,
+        "observedValue": 0,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 3.1,
+        "observedValue": 3,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 4.1,
+        "observedValue": 4,
+        "deviationValue": 0.09999999999999964
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "32",
+    "Certificate #": "DLEC/CAL/01809",
+    "equipmentType": "FREEZER #1 (-18oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-009",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "KANTECH",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": -17.8,
+        "observedValue": -18,
+        "deviationValue": 0.1999999999999993
+      },
+      {
+        "standardValue": -18.2,
+        "observedValue": -18,
+        "deviationValue": -0.1999999999999993
+      },
+      {
+        "standardValue": -18.5,
+        "observedValue": -18,
+        "deviationValue": -0.5
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "33",
+    "Certificate #": "DLEC/CAL/01810",
+    "equipmentType": "FREEZER #2 (-18oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-010",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": -17.5,
+        "observedValue": -18,
+        "deviationValue": 0.5
+      },
+      {
+        "standardValue": -17.9,
+        "observedValue": -18,
+        "deviationValue": 0.10000000000000142
+      },
+      {
+        "standardValue": -18.2,
+        "observedValue": -18,
+        "deviationValue": -0.1999999999999993
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "34",
+    "Certificate #": "DLEC/CAL/01811",
+    "equipmentType": "FREEZER #3 (-18oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-011",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": -18.1,
+        "observedValue": -18,
+        "deviationValue": -0.10000000000000142
+      },
+      {
+        "standardValue": -18.1,
+        "observedValue": -18,
+        "deviationValue": -0.10000000000000142
+      },
+      {
+        "standardValue": -18.2,
+        "observedValue": -18,
+        "deviationValue": -0.1999999999999993
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "35",
+    "Certificate #": "DLEC/CAL/01812",
+    "equipmentType": "DIGITAL WEIGHING SCALE (10Kg)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-012",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with reference dead weights traceable to",
+    "manufacturer": "EAGLE MAX",
+    "srNo": "NA",
+    "code": "WT-006",
+    "calibrationData": [
+      {
+        "standardValue": 0.1,
+        "observedValue": 0.1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.2,
+        "observedValue": 0.2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 0.5,
+        "observedValue": 0.5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 3,
+        "observedValue": 3,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 5,
+        "observedValue": 5,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 7,
+        "observedValue": 7,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 10,
+        "observedValue": 10,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "36",
+    "Certificate #": "DLEC/CAL/01813",
+    "equipmentType": "RAW MILK CHILLER #5 (0~10oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-013",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 2.1,
+        "observedValue": 2,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 4.1,
+        "observedValue": 4,
+        "deviationValue": 0.09999999999999964
+      },
+      {
+        "standardValue": 6.2,
+        "observedValue": 6,
+        "deviationValue": 0.20000000000000018
+      },
+      {
+        "standardValue": 8.2,
+        "observedValue": 8,
+        "deviationValue": 0.1999999999999993
+      },
+      {
+        "standardValue": 10.2,
+        "observedValue": 10,
+        "deviationValue": 0.1999999999999993
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "37",
+    "Certificate #": "DLEC/CAL/01814",
+    "equipmentType": "RAW MILK CHILLER #6 (0~10oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-014",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 2.1,
+        "observedValue": 2,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 4.1,
+        "observedValue": 4,
+        "deviationValue": 0.09999999999999964
+      },
+      {
+        "standardValue": 6.2,
+        "observedValue": 6,
+        "deviationValue": 0.20000000000000018
+      },
+      {
+        "standardValue": 8.2,
+        "observedValue": 8,
+        "deviationValue": 0.1999999999999993
+      },
+      {
+        "standardValue": 10.3,
+        "observedValue": 10,
+        "deviationValue": 0.3000000000000007
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "38",
+    "Certificate #": "DLEC/CAL/01815",
+    "equipmentType": "KULFI RUBRI CHILLER #2 (1~4oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-015",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 1.1,
+        "observedValue": 1,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 2.1,
+        "observedValue": 2,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 3.1,
+        "observedValue": 3,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 4.2,
+        "observedValue": 4,
+        "deviationValue": 0.20000000000000018
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "39",
+    "Certificate #": "DLEC/CAL/01816",
+    "equipmentType": "MILK CHILLER #7 (0~4oC)",
+    "client": "AL FAZAL FOODS",
+    "dataSheetNo": "O-016",
+    "calibrationDate": "24-01-2025",
+    "calibrationDue": "23-01-2026",
+    "temperature": "25oC+2oC",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard Thermometer Sr. # 190716862",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "TM-016",
+    "calibrationData": [
+      {
+        "standardValue": 1,
+        "observedValue": 1,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2,
+        "observedValue": 2,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 3.1,
+        "observedValue": 3,
+        "deviationValue": 0.10000000000000009
+      },
+      {
+        "standardValue": 4.1,
+        "observedValue": 4,
+        "deviationValue": 0.09999999999999964
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "40",
+    "Certificate #": "DLEC/CAL/50846",
+    "equipmentType": "NA",
+    "client": "DESCON ENGINEERING",
+    "dataSheetNo": "O-046",
+    "calibrationDate": "18-08-2025",
+    "calibrationDue": "17-08-2026",
+    "temperature": "25Â°CÂ±2Â°C",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard pressure calibrator containing gauge Sr.# T-418-3",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "PG-003",
+    "calibrationData": [
+      {
+        "standardValue": 520,
+        "observedValue": 500,
+        "deviationValue": 20
+      },
+      {
+        "standardValue": 1000,
+        "observedValue": 1000,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1480,
+        "observedValue": 1500,
+        "deviationValue": -20
+      },
+      {
+        "standardValue": 1970,
+        "observedValue": 2000,
+        "deviationValue": -30
+      },
+      {
+        "standardValue": 2470,
+        "observedValue": 2500,
+        "deviationValue": -30
+      },
+      {
+        "standardValue": 2950,
+        "observedValue": 3000,
+        "deviationValue": -50
+      },
+      {
+        "standardValue": 3450,
+        "observedValue": 3500,
+        "deviationValue": -50
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "41",
+    "Certificate #": "DLEC/CAL/50847",
+    "equipmentType": "NA",
+    "client": "DESCON ENGINEERING",
+    "dataSheetNo": "O-047",
+    "calibrationDate": "18-08-2025",
+    "calibrationDue": "17-08-2026",
+    "temperature": "25Â°CÂ±2Â°C",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard pressure calibrator containing gauge Sr.# T-418-3",
+    "manufacturer": "LIFE CARE MEDICAL",
+    "srNo": "NA",
+    "code": "PG-003",
+    "calibrationData": [
+      {
+        "standardValue": 480,
+        "observedValue": 500,
+        "deviationValue": -20
+      },
+      {
+        "standardValue": 980,
+        "observedValue": 1000,
+        "deviationValue": -20
+      },
+      {
+        "standardValue": 1470,
+        "observedValue": 1500,
+        "deviationValue": -30
+      },
+      {
+        "standardValue": 1950,
+        "observedValue": 2000,
+        "deviationValue": -50
+      },
+      {
+        "standardValue": 2450,
+        "observedValue": 2500,
+        "deviationValue": -50
+      },
+      {
+        "standardValue": 2950,
+        "observedValue": 3000,
+        "deviationValue": -50
+      },
+      {
+        "standardValue": 3450,
+        "observedValue": 3500,
+        "deviationValue": -50
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "42",
+    "Certificate #": "DLEC/CAL/50848",
+    "equipmentType": "NA",
+    "client": "DESCON ENGINEERING",
+    "dataSheetNo": "O-048",
+    "calibrationDate": "18-08-2025",
+    "calibrationDue": "17-08-2026",
+    "temperature": "25Â°CÂ±2Â°C",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard pressure calibrator containing gauge Sr.# T-418-3",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "PG-003",
+    "calibrationData": [
+      {
+        "standardValue": 500,
+        "observedValue": 500,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1000,
+        "observedValue": 1000,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 1520,
+        "observedValue": 1500,
+        "deviationValue": 20
+      },
+      {
+        "standardValue": 2030,
+        "observedValue": 2000,
+        "deviationValue": 30
+      },
+      {
+        "standardValue": 2550,
+        "observedValue": 2500,
+        "deviationValue": 50
+      },
+      {
+        "standardValue": 3050,
+        "observedValue": 3000,
+        "deviationValue": 50
+      }
+    ],
+    "isValid": true
+  },
+  {
+    "id": "43",
+    "Certificate #": "DLEC/CAL/50849",
+    "equipmentType": "NA",
+    "client": "DESCON ENGINEERING",
+    "dataSheetNo": "O-049",
+    "calibrationDate": "18-08-2025",
+    "calibrationDue": "17-08-2026",
+    "temperature": "25Â°CÂ±2Â°C",
+    "location": "NA",
+    "calibratedBy": "H. Nouman",
+    "checkedBy": "M. Waqas Tariq",
+    "traceability": "Instrument has been calibrated with standard pressure calibrator containing gauge Sr.# T-418-3",
+    "manufacturer": "NA",
+    "srNo": "NA",
+    "code": "PG-003",
+    "calibrationData": [
+      {
+        "standardValue": 520,
+        "observedValue": 500,
+        "deviationValue": 20
+      },
+      {
+        "standardValue": 1020,
+        "observedValue": 1000,
+        "deviationValue": 20
+      },
+      {
+        "standardValue": 1520,
+        "observedValue": 1500,
+        "deviationValue": 20
+      },
+      {
+        "standardValue": 2000,
+        "observedValue": 2000,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 2500,
+        "observedValue": 2500,
+        "deviationValue": 0
+      },
+      {
+        "standardValue": 3000,
+        "observedValue": 3000,
+        "deviationValue": 0
+      }
+    ],
+    "isValid": true
+  }
+]

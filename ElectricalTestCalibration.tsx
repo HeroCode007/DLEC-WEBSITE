@@ -1,3 +1,5 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Zap, CheckCircle, Award, ArrowRight, Phone, Shield } from 'lucide-react';
 
@@ -42,6 +44,14 @@ const ElectricalTestCalibration = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Electrical Test Equipment Calibration in Lahore | DLEC</title>
+        <meta
+          name="description"
+          content="Get multimeters, clamp meters, and electrical testers calibrated in Lahore, Pakistan. Fast, traceable ISO compliance electrical testing services by DLEC."
+        />
+        <link rel="canonical" href="https://dlec.com/services/electrical-test-calibration" />
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-indigo-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

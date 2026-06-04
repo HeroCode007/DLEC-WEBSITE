@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
@@ -87,6 +88,15 @@ path: "/services/construction-calibration"
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Calibration Services in Lahore | DLEC | ISO 9001:2015 Certified</title>
+        <meta
+          name="description"
+          content="Looking for professional calibration services in Lahore? DLEC is an ISO 9001:2015 certified company providing high-accuracy temperature, scale, pressure, electrical, and force calibration. On-site & lab services."
+        />
+        <link rel="canonical" href="https://dlec.com/" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -94,10 +104,10 @@ path: "/services/construction-calibration"
             <div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Precision Calibration for <span className="text-black">Productivity & Profitability</span>
+                Precision <span className="text-blue-700">Calibration Services</span> in Lahore, Pakistan
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                At DLEC, we've been a trusted partner in the industry for over two decades, providing proactive calibration services that ensure accuracy, reliability, and efficiency. Our team of experts is dedicated to delivering high-quality solutions that meet the evolving needs of our clients across various sectors.
+                Direct Line Engineering Corporation (DLEC) is your trusted ISO 9001:2015 certified calibration partner in Lahore. For over two decades, our expert technicians have delivered high-accuracy, traceable on-site and laboratory calibration services that guarantee absolute precision and industry compliance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
@@ -121,6 +131,43 @@ path: "/services/construction-calibration"
                 className="w-full h-[22rem] object-cover rounded-lg shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificate Validation CTA Banner */}
+      <section className="bg-gradient-to-r from-blue-700 to-blue-900 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-center" data-aos="fade-up">
+            <div className="text-white">
+              <div className="flex items-center gap-3 mb-4">
+                <Award size={32} className="text-yellow-300" />
+                <span className="text-yellow-300 font-semibold text-lg">Certificate Verification</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Verify Your Calibration Certificate
+              </h2>
+              <p className="text-lg text-blue-50 mb-6 leading-relaxed">
+                Instantly validate your calibration certificates and access detailed test results, standards compliance, and technical specifications. Our transparent verification system demonstrates the authenticity and precision of your DLEC calibration services.
+              </p>
+              <Link 
+                to="/verify-certificate"
+                className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors duration-200 inline-flex items-center gap-2"
+              >
+                Verify Certificate Now <ArrowRight size={20} />
+              </Link>
+            </div>
+            <div className="text-center" data-aos="fade-left">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <CheckCircle size={64} className="text-green-400 mx-auto mb-4" />
+                <p className="text-white text-lg font-semibold">
+                  Professional Certificate Validation
+                </p>
+                <p className="text-blue-100 mt-2">
+                  Fast, secure, and transparent verification system
+                </p>
+              </div>
             </div>
           </div>
         </div>

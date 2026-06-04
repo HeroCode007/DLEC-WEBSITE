@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
-import logo from './dleclogo.png'; // Ensure logo is in the correct path
 
 const Footer = () => {
   return (
@@ -12,7 +11,7 @@ const Footer = () => {
           {/* Left: Logo and Name */}
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full md:w-auto text-center sm:text-left">
             <img
-              src={logo}
+              src="/dleclogo.png"
               alt="Direct Line Engineering Corporation Logo"
               className="h-24 w-auto object-contain border-2 border-white rounded-3xl shadow-md bg-white p-1"
             />
