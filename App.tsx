@@ -22,7 +22,7 @@ import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
 
 import LineLengthCalibrationPage from './LineLengthCalibrationPage';
-import CertificateValidationPage from './CertificateValidationPage';
+import CertificateVerifyPage from './CertificateVerifyPage';
 import AdminCertificatesDashboard from './AdminCertificatesDashboard';
 import AdminLoginPage from './AdminLoginPage';
 
@@ -52,6 +52,9 @@ function App() {
         ) : (
           <div className="min-h-screen bg-white">
             <Routes>
+              {/* Certificate verify landing page — no Header/Footer, public */}
+              <Route path="/certificate" element={<CertificateVerifyPage />} />
+
               {/* Admin login — no Header/Footer */}
               <Route path="/admin/login" element={<AdminLoginPage />} />
 
@@ -83,8 +86,6 @@ function App() {
                       <Route path="/services/force-calibration" element={<ForceCalibration />} />
                       <Route path="/services/construction-calibration" element={<ConstructionCalibration />} />
                       <Route path="/services/line-length-dimensions-calibration" element={<LineLengthCalibrationPage />} />
-
-                      <Route path="/verify-certificate" element={<CertificateValidationPage />} />
 
                       <Route path="/about" element={<AboutPage />} />
                       <Route path="/contact" element={<ContactPage />} />

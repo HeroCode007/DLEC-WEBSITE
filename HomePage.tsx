@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
+import EminentCustomersSection from './EminentCustomersSection';
 import { Helmet } from 'react-helmet';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight,
-  Award,
-  Users,
-  CheckCircle,
   ArrowRight,
   Ruler,
   Gauge
@@ -136,43 +134,6 @@ path: "/services/construction-calibration"
         </div>
       </section>
 
-      {/* Certificate Validation CTA Banner */}
-      <section className="bg-gradient-to-r from-blue-700 to-blue-900 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-center" data-aos="fade-up">
-            <div className="text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <Award size={32} className="text-yellow-300" />
-                <span className="text-yellow-300 font-semibold text-lg">Certificate Verification</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Verify Your Calibration Certificate
-              </h2>
-              <p className="text-lg text-blue-50 mb-6 leading-relaxed">
-                Instantly validate your calibration certificates and access detailed test results, standards compliance, and technical specifications. Our transparent verification system demonstrates the authenticity and precision of your DLEC calibration services.
-              </p>
-              <Link 
-                to="/verify-certificate"
-                className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors duration-200 inline-flex items-center gap-2"
-              >
-                Verify Certificate Now <ArrowRight size={20} />
-              </Link>
-            </div>
-            <div className="text-center" data-aos="fade-left">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <CheckCircle size={64} className="text-green-400 mx-auto mb-4" />
-                <p className="text-white text-lg font-semibold">
-                  Professional Certificate Validation
-                </p>
-                <p className="text-blue-100 mt-2">
-                  Fast, secure, and transparent verification system
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section id="services" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -221,8 +182,10 @@ path: "/services/construction-calibration"
         </div>
       </section>
 
-      {/* About Preview Section */}
-{/* What Sets DLEC Apart Section */}
+      {/* Eminent Customers & Corporate Partners Showcase */}
+      <EminentCustomersSection />
+
+      {/* What Sets DLEC Apart Section */}
 <section className="py-20 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16" data-aos="fade-up">

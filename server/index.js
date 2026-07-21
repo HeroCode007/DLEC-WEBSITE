@@ -118,21 +118,20 @@ app.get('/api/auth/verify', authMiddleware, (req, res) => {
   res.json({ valid: true, user: { username: req.adminUser.sub, role: req.adminUser.role } });
 });
 
-// ── Public Routes (No Auth Required) ────────────────────────────────────────
+// GET /api/certificates/public/:certNumber — public lookup endpoint for QR scanners
+app.get('/api/certificates/public/:certNumber', async (req, res) => {
+  const certNo = (req.params.certNumber || '').trim().toUpperCase();
+  if (!certNo) return res.status(400).json({ error: 'Certificate number required' });
 
-// GET /api/certificates?number=DLEC/CAL/XXXXX  — public certificate lookup
-app.get('/api/certificates', async (req, res) => {
-  const number = req.query.number?.toString().trim();
-  if (!number) return res.status(400).json({ error: 'Certificate number required' });
+  const rawList = await loadCertificates();
+  const certs = rawList.map((c, i) => toCertificateFormat(c, i + 1));
+  const found = certs.find((c) => (c['Certificate #'] || '').trim().toUpperCase() === certNo);
 
-  const certificates = await loadCertificates();
-  const cert = certificates.find(
-    (c) => c['Certificate #']?.toUpperCase() === number.toUpperCase()
-  );
+  if (!found) {
+    return res.status(404).json({ found: false, message: 'Certificate not found in database' });
+  }
 
-  if (!cert) return res.status(404).json({ error: 'Certificate not found' });
-  // Always normalise — certs may have been stored in Excel-field format by older imports
-  res.json(toCertificateFormat(cert, cert.id || ''));
+  res.json({ found: true, certificate: found });
 });
 
 // ── Protected Admin Routes (Auth Required) ──────────────────────────────────
@@ -171,6 +170,21 @@ app.post('/api/certificates/import', authMiddleware, async (req, res) => {
   const merged = Array.from(map.values());
   await saveCertificates(merged);
   res.json({ imported, skipped, total: merged.length });
+});
+
+// DELETE /api/certificates/:id  — admin: remove a single certificate by ID
+app.delete('/api/certificates/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const rawList = await loadCertificates();
+  const certs = rawList.map((c, i) => toCertificateFormat(c, i + 1));
+  
+  const filtered = certs.filter((c) => String(c.id) !== String(id));
+  if (filtered.length === certs.length) {
+    return res.status(404).json({ error: 'Certificate not found' });
+  }
+
+  await saveCertificates(filtered);
+  res.json({ message: 'Certificate deleted successfully', total: filtered.length });
 });
 
 // DELETE /api/certificates  — admin: remove all certificates

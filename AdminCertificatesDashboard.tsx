@@ -1,24 +1,51 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Upload, Trash2, Download, CheckCircle, AlertCircle, Loader, RefreshCw, LogOut } from 'lucide-react';
+import {
+  Upload,
+  Trash2,
+  Download,
+  CheckCircle,
+  AlertCircle,
+  Loader,
+  RefreshCw,
+  LogOut,
+  QrCode,
+  Search,
+  Filter,
+  Eye,
+  X,
+  FileSpreadsheet,
+  ShieldCheck,
+  Building,
+  Calendar,
+  Layers,
+} from 'lucide-react';
+import QRCode from 'qrcode';
 import * as XLSX from 'xlsx';
 import { Certificate, ImportedCertificate, getCertStatus } from './certificateData';
 import {
   fetchAllCertificates,
   importCertificatesToServer,
   deleteAllCertificates,
+  deleteSingleCertificate,
 } from './certificateApi';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const AdminCertificatesDashboard = () => {
+export const AdminCertificatesDashboard = () => {
   const [savedCerts, setSavedCerts] = useState<Certificate[]>([]);
   const [previewCerts, setPreviewCerts] = useState<ImportedCertificate[]>([]);
   const [loading, setLoading] = useState(false);
   const [serverAvailable, setServerAvailable] = useState(true);
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [message, setMessage] = useState<{ type: 'success' | 'error' | 'warning'; text: string } | null>(null);
   const [showPreview, setShowPreview] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // Dashboard 2.0 State Controls
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'All' | 'Valid' | 'Expired' | 'Pending'>('All');
+  const [qrModalCert, setQrModalCert] = useState<Certificate | null>(null);
+  const [qrModalDataUrl, setQrModalDataUrl] = useState<string>('');
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { getToken, logout, user } = useAuth();
   const navigate = useNavigate();
 
@@ -30,7 +57,7 @@ const AdminCertificatesDashboard = () => {
     }, 1500);
   }, [logout, navigate]);
 
-  const showMsg = (type: 'success' | 'error', text: string, duration = 5000) => {
+  const showMsg = (type: 'success' | 'error' | 'warning', text: string, duration = 5000) => {
     setMessage({ type, text });
     setTimeout(() => setMessage(null), duration);
   };
@@ -56,14 +83,13 @@ const AdminCertificatesDashboard = () => {
     loadFromServer();
   }, [loadFromServer]);
 
-  // Parse an Excel file into ImportedCertificate rows (client-side only, no saving yet)
+  // Handle Excel file upload and parsing
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
     if (fileInputRef.current) fileInputRef.current.value = '';
 
     setLoading(true);
-
     const reader = new FileReader();
 
     reader.onload = (e) => {
@@ -74,13 +100,10 @@ const AdminCertificatesDashboard = () => {
 
         const certificates: ImportedCertificate[] = [];
         let current: Record<string, string> = {};
-        // Column indices for the calibration data table (set when header row is detected)
         let calCols: { sv: number; ov: number; dv: number } | null = null;
 
-        const norm = (s: unknown) =>
-          String(s ?? '').trim().replace(/^['"]|['"]$/g, '').toLowerCase();
-        const val = (s: unknown) =>
-          String(s ?? '').trim().replace(/^['"]|['"]$/g, '').replace(/^:\s*/, '');
+        const norm = (s: unknown) => String(s ?? '').trim().replace(/^['"]|['"]$/g, '').toLowerCase();
+        const val = (s: unknown) => String(s ?? '').trim().replace(/^['"]|['"]$/g, '').replace(/^:\s*/, '');
 
         const flush = () => {
           if (Object.keys(current).length === 0) return;
@@ -107,14 +130,12 @@ const AdminCertificatesDashboard = () => {
             'CHECKED BY': current['CHECKED BY'],
           });
           current = {};
-          calCols = null; // reset calibration table state for next certificate
+          calCols = null;
         };
 
         const applyField = (label: string, value: string) => {
           if (!value) return;
-          if (label.includes('certificate') && label.includes('#')) { flush(); current['Certificate #'] = value; }
-          else if (label.includes('certificate') && (label.includes('no') || label.includes('num'))) { flush(); current['Certificate #'] = value; }
-          else if (label === 'client') current['Client'] = value;
+          if (label.includes('certificate') && (label.includes('#') || label.includes('no') || label.includes('num'))) { flush(); current['Certificate #'] = value; }
           else if (label.includes('client') && !label.includes('location')) current['Client'] = value;
           else if (label.includes('model') || (label.includes('equipment') && label.includes('type'))) current['Model/Type'] = value;
           else if (label.includes('data sheet') || label.includes('datasheet')) current['Data Sheet No.'] = value;
@@ -135,429 +156,533 @@ const AdminCertificatesDashboard = () => {
         for (let rowIdx = 0; rowIdx < rawData.length; rowIdx++) {
           const row = rawData[rowIdx];
           if (!row || row.length === 0) continue;
-
           const normRow = Array.from({ length: row.length }, (_, i) => norm(row[i]));
 
-          // ── Detect calibration-data table header ──────────────────────────
-          // Matches when a single row contains "standard", "observed", AND "deviation"
-          // in separate cells (regardless of which columns they appear in).
           const svHeaderCol = normRow.findIndex(c => c.includes('standard') && c.length > 2);
           const ovHeaderCol = normRow.findIndex(c => (c.includes('observed') || c.includes('nominated')) && c.length > 2);
           const dvHeaderCol = normRow.findIndex(c => c.includes('deviation') && c.length > 2);
 
           if (svHeaderCol !== -1 && ovHeaderCol !== -1 && dvHeaderCol !== -1) {
             calCols = { sv: svHeaderCol, ov: ovHeaderCol, dv: dvHeaderCol };
-            continue; // skip the header row itself
+            continue;
           }
 
-          // ── Read calibration data rows (once inside the table) ────────────
           if (calCols) {
-            const svRaw = String(row[calCols.sv] ?? '').trim();
-            const ovRaw = String(row[calCols.ov] ?? '').trim();
-            const dvRaw = String(row[calCols.dv] ?? '').trim();
-            const svNum = parseFloat(svRaw);
+            const svCell = val(row[calCols.sv]);
+            const ovCell = val(row[calCols.ov]);
+            const dvCell = val(row[calCols.dv]);
 
-            if (!isNaN(svNum) && svRaw !== '') {
-              // Valid numeric calibration row — accumulate
-              const append = (key: string, v: string) => {
-                current[key] = current[key] ? current[key] + ',' + v : v;
-              };
-              append('STANDARD VALUE', svRaw);
-              append('OBSERVED VALUE', ovRaw || '0');
-              append('DEVIATION VALUE', dvRaw || '0');
+            const looksLikeNum = (s: string) => s !== '' && !isNaN(Number(s.replace(/,/g, '')));
+            if (looksLikeNum(svCell) || looksLikeNum(ovCell) || looksLikeNum(dvCell)) {
+              current['STANDARD VALUE'] = current['STANDARD VALUE'] ? `${current['STANDARD VALUE']},${svCell}` : svCell;
+              current['OBSERVED VALUE'] = current['OBSERVED VALUE'] ? `${current['OBSERVED VALUE']},${ovCell}` : ovCell;
+              current['DEVIATION VALUE'] = current['DEVIATION VALUE'] ? `${current['DEVIATION VALUE']},${dvCell}` : dvCell;
               continue;
             }
-
-            // Non-numeric row: exit calibration table only when we hit a known section label
-            const col0 = normRow[0] || '';
-            const isSectionLabel =
-              col0.includes('traceability') ||
-              col0.includes('calibrated by') ||
-              col0.includes('checked by') ||
-              (col0.includes('certificate') && col0.includes('#'));
-            if (!isSectionLabel) continue; // unit row / empty row — skip but stay in table
-            calCols = null; // fall through to key-value parsing
           }
 
-          // ── Key-value parsing: scan ALL columns of the row ─────────────────
-          // DLEC certificates have a two-column layout where metadata appears in
-          // column pairs (left side: cols 0–1, right side: cols 3–5).
-          // Scanning every cell finds both sides automatically.
-          for (let ci = 0; ci < row.length; ci++) {
-            const label = normRow[ci];
-            if (!label || label.length < 2) continue;
-
-            // Find value: next non-empty cell within 3 columns (same row)
-            let value = '';
-            let valueCol = ci;
-            for (let j = ci + 1; j <= Math.min(ci + 3, row.length - 1); j++) {
-              const rawCell = String(row[j] ?? '').trim();
-              if (rawCell.startsWith(':')) { value = val(row[j]); valueCol = j; break; }
+          let matchedTwoCol = false;
+          for (let i = 0; i < row.length - 1; i++) {
+            const labelStr = norm(row[i]);
+            const valueStr = val(row[i + 1]);
+            if (labelStr && valueStr) {
+              applyField(labelStr, valueStr);
+              matchedTwoCol = true;
+              break;
             }
+          }
+          if (matchedTwoCol) continue;
 
-            // CALIBRATED BY, CHECKED BY, TRACEABILITY: value may be on a later row
-            // (the name appears below the heading/signature area in the certificate)
-            if (!value && (label.includes('calibrated by') || label.includes('checked by') || label.includes('traceability'))) {
-              for (let r2 = rowIdx + 1; r2 <= Math.min(rowIdx + 6, rawData.length - 1); r2++) {
-                const v = val(rawData[r2]?.[ci]);
-                if (v) { value = v; break; }
-              }
+          for (let i = 0; i < row.length; i++) {
+            const cell = String(row[i] ?? '').trim();
+            const colonIdx = cell.indexOf(':');
+            if (colonIdx > 0) {
+              const labelStr = norm(cell.slice(0, colonIdx));
+              const valueStr = val(cell.slice(colonIdx + 1));
+              applyField(labelStr, valueStr);
             }
-
-            applyField(label, value);
-
-            // Advance past the value cell so we don't re-process it as a label
-            if (valueCol > ci) ci = valueCol;
           }
         }
         flush();
 
         if (certificates.length === 0) {
-          showMsg('error', `No certificates found in file. Parsed ${rawData.length} rows — check the Excel format.`);
+          showMsg('error', 'No valid certificates found in the file. Check the format below.');
         } else {
           setPreviewCerts(certificates);
           setShowPreview(true);
-          showMsg('success', `Parsed ${certificates.length} certificate(s). Review below then click "Save to Database".`);
+          showMsg('success', `Parsed ${certificates.length} certificate(s). Review below and click "Save to Server".`);
         }
-      } catch (err) {
-        showMsg('error', "Error reading Excel file. Make sure it's a valid .xlsx or .xls file.");
-        console.error('Parse error:', err);
+      } catch {
+        showMsg('error', 'Failed to parse Excel file. Make sure it is a valid .xlsx or .xls file.');
       } finally {
         setLoading(false);
       }
     };
 
-    reader.onerror = () => {
-      showMsg('error', 'Error reading file.');
-      setLoading(false);
-    };
-
     reader.readAsArrayBuffer(file);
   };
 
-  const confirmAndSave = async () => {
+  const handleSaveToServer = async () => {
     const token = getToken();
     if (!token) { handleSessionExpired(); return; }
+    if (previewCerts.length === 0) return;
+
     setLoading(true);
     try {
-      const result = await importCertificatesToServer(previewCerts, token);
-      showMsg(
-        'success',
-        `Saved ${result.imported} certificate(s) to database.` +
-          (result.skipped > 0 ? ` ${result.skipped} skipped (missing certificate number).` : '')
-      );
-      setShowPreview(false);
+      const res = await importCertificatesToServer(previewCerts, token);
+      showMsg('success', `Successfully imported ${res.imported} certificate(s) to server database.`);
       setPreviewCerts([]);
+      setShowPreview(false);
       await loadFromServer();
     } catch (err: any) {
       if (err?.message === 'UNAUTHORIZED') { handleSessionExpired(); return; }
-      showMsg('error', 'Failed to save certificates. Is the server running on port 5000?');
+      showMsg('error', 'Failed to save certificates to server.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteSingle = async (cert: Certificate) => {
+    if (!window.confirm(`Are you sure you want to delete certificate ${cert['Certificate #']}?`)) return;
+    const token = getToken();
+    if (!token) { handleSessionExpired(); return; }
+
+    setLoading(true);
+    try {
+      await deleteSingleCertificate(cert.id, token);
+      showMsg('success', `Certificate ${cert['Certificate #']} deleted successfully.`);
+      await loadFromServer();
+    } catch (err: any) {
+      if (err?.message === 'UNAUTHORIZED') { handleSessionExpired(); return; }
+      showMsg('error', 'Failed to delete certificate.');
     } finally {
       setLoading(false);
     }
   };
 
   const handleClearAll = async () => {
-    if (!window.confirm('Are you sure? This will permanently delete ALL certificates from the database.')) return;
+    if (!window.confirm('WARNING: Are you sure you want to delete ALL saved certificates from the server? This action cannot be undone.')) {
+      return;
+    }
     const token = getToken();
     if (!token) { handleSessionExpired(); return; }
+
     setLoading(true);
     try {
       await deleteAllCertificates(token);
       setSavedCerts([]);
-      showMsg('success', 'All certificates deleted from database.');
+      showMsg('success', 'All certificates deleted from server.');
     } catch (err: any) {
       if (err?.message === 'UNAUTHORIZED') { handleSessionExpired(); return; }
-      showMsg('error', 'Failed to delete certificates.');
+      showMsg('error', 'Failed to clear certificates from server.');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate('/admin/login');
+  const downloadQR = async (certNum: string) => {
+    try {
+      const origin = window.location.origin;
+      const verifyUrl = `${origin}/certificate?cert=${encodeURIComponent(certNum)}`;
+      const dataUrl = await QRCode.toDataURL(verifyUrl, { width: 350, margin: 2 });
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = `QR-${certNum}.png`;
+      link.click();
+      showMsg('success', `Downloaded QR code for ${certNum}`);
+    } catch {
+      showMsg('error', 'Failed to generate QR code.');
+    }
+  };
+
+  const openQrModal = async (cert: Certificate) => {
+    try {
+      const origin = window.location.origin;
+      const verifyUrl = `${origin}/certificate?cert=${encodeURIComponent(cert['Certificate #'])}`;
+      const dataUrl = await QRCode.toDataURL(verifyUrl, { width: 400, margin: 2 });
+      setQrModalCert(cert);
+      setQrModalDataUrl(dataUrl);
+    } catch {
+      showMsg('error', 'Failed to generate QR code preview.');
+    }
   };
 
   const exportCurrentData = () => {
-    if (savedCerts.length === 0) {
-      showMsg('error', 'No certificates to export.');
-      return;
-    }
+    if (savedCerts.length === 0) return;
     const ws = XLSX.utils.json_to_sheet(savedCerts);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Certificates');
-    XLSX.writeFile(wb, `dlec_certificates_backup_${new Date().toISOString().split('T')[0]}.xlsx`);
-    showMsg('success', 'Certificates exported successfully!');
+    XLSX.writeFile(wb, `DLEC_Certificates_Export_${new Date().toISOString().split('T')[0]}.xlsx`);
+    showMsg('success', 'Exported certificates to Excel file.');
   };
 
-  const statusColor = (status: string) => {
-    if (status === 'Valid') return 'bg-green-100 text-green-800';
-    if (status === 'Expired') return 'bg-red-100 text-red-800';
-    return 'bg-yellow-100 text-yellow-800';
-  };
+  // Filtered Certificates Array
+  const filteredCerts = savedCerts.filter((cert) => {
+    const status = getCertStatus(cert.calibrationDue);
+    const matchesStatus = statusFilter === 'All' || status === statusFilter;
+    const query = searchQuery.toLowerCase();
+    const matchesSearch =
+      cert['Certificate #'].toLowerCase().includes(query) ||
+      cert.client.toLowerCase().includes(query) ||
+      cert.equipmentType.toLowerCase().includes(query) ||
+      cert.srNo.toLowerCase().includes(query) ||
+      cert.location.toLowerCase().includes(query);
 
+    return matchesStatus && matchesSearch;
+  });
+
+  // Calculate Stat Counter Badges
+  const totalCount = savedCerts.length;
   const validCount = savedCerts.filter((c) => getCertStatus(c.calibrationDue) === 'Valid').length;
   const expiredCount = savedCerts.filter((c) => getCertStatus(c.calibrationDue) === 'Expired').length;
   const pendingCount = savedCerts.filter((c) => getCertStatus(c.calibrationDue) === 'Pending').length;
 
-  return (
-    <div className="pt-24 pb-12 bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  const statusColor = (status: 'Valid' | 'Expired' | 'Pending') => {
+    switch (status) {
+      case 'Valid': return 'bg-green-100 text-green-800 border border-green-200';
+      case 'Expired': return 'bg-red-100 text-red-800 border border-red-200';
+      case 'Pending': return 'bg-yellow-100 text-yellow-800 border border-yellow-200';
+    }
+  };
 
-        {/* Header */}
-        <div className="mb-8 flex items-start justify-between flex-wrap gap-4">
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">Certificate Management Dashboard</h1>
-            <p className="text-xl text-gray-600">Import and manage calibration certificates in the DLEC database</p>
+  return (
+    <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* Header Navigation Bar */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-4">
+            <img src="https://i.postimg.cc/yNv6qThw/dleclogo.png" alt="DLEC Logo" className="h-12 object-contain" />
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">DLEC Calibration Dashboard 2.0</h1>
+              <p className="text-sm text-gray-500">ISO 9001:2015 Certificate & Calibration Management</p>
+            </div>
           </div>
+
           <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-500 hidden sm:inline">
-              Logged in as <strong className="text-gray-700">{user?.username}</strong>
-            </span>
             <button
               onClick={loadFromServer}
               disabled={loading}
-              className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer"
             >
               <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
-              Refresh
+              Sync Server
             </button>
             <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-lg text-red-700 hover:bg-red-100 transition-colors"
+              onClick={() => { logout(); navigate('/admin/login'); }}
+              className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-xl text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer"
             >
               <LogOut size={16} />
-              Logout
+              Logout ({user?.username})
             </button>
           </div>
         </div>
 
-        {/* Server Unavailable Warning */}
+        {/* Server Connection Alert */}
         {!serverAvailable && (
-          <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 flex items-center gap-3">
-            <AlertCircle size={20} />
-            <span>
-              Certificate server is not reachable. Start it with{' '}
-              <code className="bg-red-100 px-1 rounded font-mono text-sm">npm run server</code>{' '}
-              from the project root, then click Refresh.
-            </span>
+          <div className="bg-red-50 border border-red-200 text-red-800 rounded-2xl p-4 flex items-center gap-3">
+            <AlertCircle className="text-red-600 flex-shrink-0" size={24} />
+            <div>
+              <p className="font-semibold text-sm">Certificate Server Offline</p>
+              <p className="text-xs text-red-600">Start the backend server on port 5000 using <code className="bg-red-100 px-1 rounded">npm start</code>.</p>
+            </div>
           </div>
         )}
 
         {/* Toast Messages */}
         {message && (
-          <div
-            className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
-              message.type === 'success'
-                ? 'bg-green-50 border border-green-200 text-green-800'
-                : 'bg-red-50 border border-red-200 text-red-800'
-            }`}
-          >
-            {message.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
-            <span>{message.text}</span>
+          <div className={`p-4 rounded-2xl border flex items-center gap-3 shadow-md transition-all ${
+            message.type === 'success' ? 'bg-green-50 border-green-200 text-green-800' :
+            message.type === 'error' ? 'bg-red-50 border-red-200 text-red-800' : 'bg-yellow-50 border-yellow-200 text-yellow-800'
+          }`}>
+            {message.type === 'success' ? <CheckCircle size={20} className="text-green-600" /> : <AlertCircle size={20} className="text-red-600" />}
+            <span className="text-sm font-medium">{message.text}</span>
           </div>
         )}
 
-        {/* Upload Section */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Import Certificates from Excel</h2>
-          <div className="border-2 border-dashed border-blue-300 rounded-lg p-8 text-center bg-blue-50">
-            <Upload size={48} className="text-blue-600 mx-auto mb-4" />
-            <p className="text-lg font-semibold text-gray-900 mb-2">Upload Your Excel File</p>
-            <p className="text-gray-600 mb-6">Select an .xlsx or .xls file containing your certificates</p>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".xlsx,.xls"
-              onChange={handleFileUpload}
-              disabled={loading}
-              className="hidden"
-            />
+        {/* Dashboard 2.0 Stat Counters */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg flex items-center gap-4">
+            <div className="p-4 bg-blue-50 text-blue-700 rounded-2xl">
+              <Layers size={28} />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-wider text-gray-400 font-bold">Total Certificates</p>
+              <p className="text-3xl font-extrabold text-gray-900">{totalCount}</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg flex items-center gap-4">
+            <div className="p-4 bg-green-50 text-green-700 rounded-2xl">
+              <ShieldCheck size={28} />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-wider text-gray-400 font-bold">Valid & Active</p>
+              <p className="text-3xl font-extrabold text-green-600">{validCount}</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg flex items-center gap-4">
+            <div className="p-4 bg-red-50 text-red-700 rounded-2xl">
+              <AlertCircle size={28} />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-wider text-gray-400 font-bold">Expired Due Date</p>
+              <p className="text-3xl font-extrabold text-red-600">{expiredCount}</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg flex items-center gap-4">
+            <div className="p-4 bg-yellow-50 text-yellow-700 rounded-2xl">
+              <Calendar size={28} />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-wider text-gray-400 font-bold">Pending Review</p>
+              <p className="text-3xl font-extrabold text-yellow-600">{pendingCount}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Excel Import Card */}
+        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <FileSpreadsheet className="text-blue-700" size={24} />
+                Bulk Import Datasheet
+              </h2>
+              <p className="text-sm text-gray-500">Upload an Excel (.xlsx / .xls) file containing calibration datasheets.</p>
+            </div>
+
+            <label className="cursor-pointer bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2 shadow-md">
+              <Upload size={18} />
+              Choose Excel File
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".xlsx, .xls"
+                onChange={handleFileUpload}
+                className="hidden"
+                disabled={loading}
+              />
+            </label>
+          </div>
+
+          {/* Import Preview Section */}
+          {showPreview && previewCerts.length > 0 && (
+            <div className="mt-6 border-t border-gray-100 pt-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-gray-900">Import Preview ({previewCerts.length} items)</h3>
+                <button
+                  onClick={handleSaveToServer}
+                  disabled={loading}
+                  className="bg-green-700 hover:bg-green-800 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2 shadow-md cursor-pointer"
+                >
+                  {loading ? <Loader className="animate-spin" size={16} /> : <CheckCircle size={16} />}
+                  Save to Server
+                </button>
+              </div>
+
+              <div className="overflow-x-auto rounded-xl border border-gray-200">
+                <table className="w-full text-xs text-left text-gray-700">
+                  <thead className="bg-gray-50 border-b border-gray-200 uppercase font-semibold text-gray-600">
+                    <tr>
+                      <th className="p-3">Cert #</th>
+                      <th className="p-3">Client</th>
+                      <th className="p-3">Equipment</th>
+                      <th className="p-3">Cal. Date</th>
+                      <th className="p-3">Due Date</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {previewCerts.slice(0, 5).map((c, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50">
+                        <td className="p-3 font-mono font-bold text-blue-700">{c['Certificate #']}</td>
+                        <td className="p-3">{c.Client}</td>
+                        <td className="p-3">{c['Model/Type']}</td>
+                        <td className="p-3">{c['Calibration Date']}</td>
+                        <td className="p-3">{c['Calibration Due']}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Saved Certificates Management Table 2.0 */}
+        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg">
+          
+          {/* Controls Bar: Search & Status Filters */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <Building className="text-blue-700" size={24} />
+                Registered Certificates ({filteredCerts.length})
+              </h2>
+              <p className="text-sm text-gray-500">Live search and certificate status management.</p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+              {/* Search Bar */}
+              <div className="relative flex-1 sm:w-64">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                <input
+                  type="text"
+                  placeholder="Search Cert #, Client, Model..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full text-sm border border-gray-300 rounded-xl pl-9 pr-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+
+              {/* Status Filter Buttons */}
+              <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-xl">
+                {(['All', 'Valid', 'Expired', 'Pending'] as const).map((st) => (
+                  <button
+                    key={st}
+                    onClick={() => setStatusFilter(st)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      statusFilter === st ? 'bg-white text-blue-700 shadow-sm' : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    {st}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Table Display */}
+          {filteredCerts.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">
+              <AlertCircle size={40} className="mx-auto text-gray-400 mb-3" />
+              <p className="text-base font-semibold">No certificates match your search filters.</p>
+              <p className="text-xs text-gray-400 mt-1">Try clearing your search query or uploading a new Excel file.</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto rounded-xl border border-gray-200 mb-6">
+              <table className="w-full text-sm text-left">
+                <thead className="bg-gray-50 border-b border-gray-200 text-xs font-bold uppercase text-gray-500">
+                  <tr>
+                    <th className="py-3.5 px-4">Certificate #</th>
+                    <th className="py-3.5 px-4">Client Name</th>
+                    <th className="py-3.5 px-4">Equipment Model</th>
+                    <th className="py-3.5 px-4">Cal Date</th>
+                    <th className="py-3.5 px-4">Due Date</th>
+                    <th className="py-3.5 px-4">Status</th>
+                    <th className="py-3.5 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {filteredCerts.map((cert) => {
+                    const status = getCertStatus(cert.calibrationDue);
+                    return (
+                      <tr key={cert.id} className="hover:bg-blue-50/50 transition-colors">
+                        <td className="py-3.5 px-4 font-mono font-bold text-blue-700">{cert['Certificate #']}</td>
+                        <td className="py-3.5 px-4 font-medium text-gray-900">{cert.client}</td>
+                        <td className="py-3.5 px-4 text-gray-600">{cert.equipmentType}</td>
+                        <td className="py-3.5 px-4 text-gray-600">{cert.calibrationDate}</td>
+                        <td className="py-3.5 px-4 text-gray-600">{cert.calibrationDue}</td>
+                        <td className="py-3.5 px-4">
+                          <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${statusColor(status)}`}>
+                            {status}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <button
+                              onClick={() => openQrModal(cert)}
+                              title="Preview QR Code Modal"
+                              className="p-2 text-gray-600 hover:text-blue-700 bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                            >
+                              <Eye size={16} />
+                            </button>
+                            <button
+                              onClick={() => downloadQR(cert['Certificate #'])}
+                              title="Download QR Sticker PNG"
+                              className="p-2 text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors cursor-pointer"
+                            >
+                              <QrCode size={16} />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteSingle(cert)}
+                              title="Delete Certificate"
+                              className="p-2 text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors cursor-pointer"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-gray-100">
             <button
-              onClick={() => fileInputRef.current?.click()}
-              disabled={loading}
-              className="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 disabled:bg-gray-400 transition-colors duration-200 flex items-center justify-center gap-2 mx-auto"
+              onClick={exportCurrentData}
+              disabled={savedCerts.length === 0}
+              className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2 shadow-md cursor-pointer disabled:opacity-50"
             >
-              {loading ? (
-                <><Loader size={20} className="animate-spin" /> Processing...</>
-              ) : (
-                <><Upload size={20} /> Choose File</>
-              )}
+              <Download size={18} /> Export Catalog (.xlsx)
+            </button>
+
+            <button
+              onClick={handleClearAll}
+              disabled={loading || savedCerts.length === 0}
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2 shadow-md cursor-pointer disabled:opacity-50"
+            >
+              <Trash2 size={18} /> Clear Database
             </button>
           </div>
         </div>
 
-        {/* Preview — shown after Excel is parsed, before saving */}
-        {showPreview && previewCerts.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              Preview — {previewCerts.length} Certificate{previewCerts.length !== 1 ? 's' : ''}
-            </h2>
-            <div className="overflow-x-auto mb-6">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Certificate #</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Client</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Model/Type</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Calibration Date</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Due Date</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewCerts.slice(0, 10).map((cert, i) => {
-                    const status = getCertStatus(cert['Calibration Due']);
-                    return (
-                      <tr key={i} className="border-b border-gray-100 hover:bg-gray-50">
-                        <td className="py-3 px-4 font-mono text-blue-700">{cert['Certificate #']}</td>
-                        <td className="py-3 px-4">{cert.Client}</td>
-                        <td className="py-3 px-4">{cert['Model/Type']}</td>
-                        <td className="py-3 px-4">{cert['Calibration Date']}</td>
-                        <td className="py-3 px-4">{cert['Calibration Due']}</td>
-                        <td className="py-3 px-4">
-                          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusColor(status)}`}>
-                            {status}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-            {previewCerts.length > 10 && (
-              <p className="text-gray-600 text-sm mb-6">
-                … and {previewCerts.length - 10} more certificate{previewCerts.length - 10 !== 1 ? 's' : ''}
-              </p>
-            )}
-            <div className="flex gap-4">
-              <button
-                onClick={confirmAndSave}
-                disabled={loading}
-                className="bg-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 disabled:opacity-50 transition-colors flex items-center gap-2"
-              >
-                {loading ? <Loader size={20} className="animate-spin" /> : <CheckCircle size={20} />}
-                Save to Database
-              </button>
-              <button
-                onClick={() => { setShowPreview(false); setPreviewCerts([]); }}
-                disabled={loading}
-                className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )}
+      </div>
 
-        {/* Database Statistics */}
-        {savedCerts.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Database Statistics</h2>
-            <div className="grid md:grid-cols-4 gap-6 mb-8">
-              <div className="bg-blue-50 rounded-lg p-6">
-                <p className="text-gray-600 text-sm font-semibold mb-2">Total Certificates</p>
-                <p className="text-3xl font-bold text-blue-700">{savedCerts.length}</p>
-              </div>
-              <div className="bg-green-50 rounded-lg p-6">
-                <p className="text-gray-600 text-sm font-semibold mb-2">Valid</p>
-                <p className="text-3xl font-bold text-green-700">{validCount}</p>
-              </div>
-              <div className="bg-red-50 rounded-lg p-6">
-                <p className="text-gray-600 text-sm font-semibold mb-2">Expired</p>
-                <p className="text-3xl font-bold text-red-700">{expiredCount}</p>
-              </div>
-              <div className="bg-yellow-50 rounded-lg p-6">
-                <p className="text-gray-600 text-sm font-semibold mb-2">Pending</p>
-                <p className="text-3xl font-bold text-yellow-700">{pendingCount}</p>
-              </div>
-            </div>
+      {/* QR Code Modal Preview */}
+      {qrModalCert && qrModalDataUrl && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button
+              onClick={() => setQrModalCert(null)}
+              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors"
+            >
+              <X size={20} />
+            </button>
 
-            {/* Certificate List */}
-            <div className="overflow-x-auto mb-8">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Certificate #</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Client</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Equipment Type</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Calibration Date</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Due Date</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {savedCerts.map((cert, i) => {
-                    const status = getCertStatus(cert.calibrationDue);
-                    return (
-                      <tr key={i} className="border-b border-gray-100 hover:bg-gray-50">
-                        <td className="py-3 px-4 font-mono text-blue-700">{cert['Certificate #']}</td>
-                        <td className="py-3 px-4">{cert.client}</td>
-                        <td className="py-3 px-4">{cert.equipmentType}</td>
-                        <td className="py-3 px-4">{cert.calibrationDate}</td>
-                        <td className="py-3 px-4">{cert.calibrationDue}</td>
-                        <td className="py-3 px-4">
-                          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusColor(status)}`}>
-                            {status}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+            <div className="text-center">
+              <div className="inline-flex p-3 bg-blue-50 text-blue-700 rounded-2xl mb-4">
+                <QrCode size={32} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Verification QR Code</h3>
+              <p className="text-xs text-gray-500 mb-6 font-mono font-bold text-blue-700">{qrModalCert['Certificate #']}</p>
 
-            <div className="flex flex-wrap gap-4">
+              <div className="bg-gray-50 p-6 rounded-2xl inline-block border border-gray-200 mb-6 shadow-inner">
+                <img src={qrModalDataUrl} alt="QR Code" className="w-56 h-56 mx-auto" />
+              </div>
+
+              <div className="text-left text-xs bg-blue-50/50 p-4 rounded-xl space-y-1.5 mb-6 border border-blue-100">
+                <p><strong>Client:</strong> {qrModalCert.client}</p>
+                <p><strong>Equipment:</strong> {qrModalCert.equipmentType}</p>
+                <p><strong>Cal Date:</strong> {qrModalCert.calibrationDate} | <strong>Due:</strong> {qrModalCert.calibrationDue}</p>
+              </div>
+
               <button
-                onClick={exportCurrentData}
-                className="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center gap-2"
+                onClick={() => downloadQR(qrModalCert['Certificate #'])}
+                className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg"
               >
-                <Download size={20} /> Export as Excel
+                <Download size={18} /> Download High-Res PNG
               </button>
-              <button
-                onClick={handleClearAll}
-                disabled={loading}
-                className="bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-800 disabled:opacity-50 transition-colors flex items-center gap-2"
-              >
-                <Trash2 size={20} /> Clear All
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Excel Format Guide */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
-          <h3 className="text-xl font-semibold text-blue-900 mb-4">Excel File Format</h3>
-          <p className="text-blue-800 mb-4">
-            The Excel file should use two columns: <strong>Label</strong> | <strong>Value</strong>.
-            Each certificate's fields appear as consecutive rows. A new certificate block starts
-            when the label <code className="bg-white px-1 rounded font-mono text-sm">Certificate #</code> is encountered.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold text-blue-900 mb-3">Required Fields:</h4>
-              <ul className="text-blue-800 space-y-2">
-                {['Certificate #', 'Client', 'Model/Type', 'Data Sheet No.', 'Manufacturer',
-                  'Temperature', 'Sr. No.', 'Calibration Date', 'Code', 'Calibration Due'].map((f) => (
-                  <li key={f}>✓ <span className="font-mono bg-white px-2 py-1 rounded text-sm">{f}</span></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-blue-900 mb-3">Optional Fields:</h4>
-              <ul className="text-blue-800 space-y-2">
-                {['Location', 'Tag/ID', 'Calibrated at', 'TRACEABILITY', 'CALIBRATED BY',
-                  'CHECKED BY', 'STANDARD VALUE', 'OBSERVED VALUE', 'DEVIATION VALUE'].map((f) => (
-                  <li key={f}>• <span className="font-mono bg-white px-2 py-1 rounded text-sm">{f}</span></li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -2,23 +2,6 @@ import { Certificate, ImportedCertificate } from './certificateData';
 
 const API_BASE = '/api';
 
-/**
- * Public API — no authentication required
- */
-export const fetchCertificate = async (certificateNumber: string): Promise<Certificate | null> => {
-  const url = `${API_BASE}/certificates?number=${encodeURIComponent(certificateNumber)}`;
-  const response = await fetch(url);
-
-  if (response.status === 404) return null;
-  if (!response.ok) throw new Error('Certificate server error');
-
-  return (await response.json()) as Certificate;
-};
-
-/**
- * Admin API — requires authentication token
- */
-
 const authHeaders = (token: string): Record<string, string> => ({
   Authorization: `Bearer ${token}`,
 });
@@ -49,6 +32,33 @@ export const importCertificatesToServer = async (
   if (response.status === 401) throw new Error('UNAUTHORIZED');
   if (!response.ok) throw new Error('Failed to import certificates to server');
   return response.json();
+};
+
+export const fetchPublicCertificate = async (
+  certNumber: string
+): Promise<{ found: boolean; certificate?: Certificate; message?: string }> => {
+  const encoded = encodeURIComponent(certNumber.trim());
+  const response = await fetch(`${API_BASE}/certificates/public/${encoded}`);
+
+  if (response.status === 404) {
+    return { found: false, message: 'Certificate not found' };
+  }
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch certificate from server');
+  }
+
+  return response.json();
+};
+
+export const deleteSingleCertificate = async (id: string, token: string): Promise<void> => {
+  const response = await fetch(`${API_BASE}/certificates/${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    headers: authHeaders(token),
+  });
+
+  if (response.status === 401) throw new Error('UNAUTHORIZED');
+  if (!response.ok) throw new Error('Failed to delete certificate');
 };
 
 export const deleteAllCertificates = async (token: string): Promise<void> => {
