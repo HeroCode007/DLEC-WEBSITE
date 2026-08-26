@@ -122,7 +122,7 @@ path: "/services/construction-calibration"
                 </a>
               </div>
             </div>
-            <div className="relative" data-aos="fade-left">
+            <div className="relative" data-aos="fade-up">
               <img 
                 src="https://i.postimg.cc/Ls2KBnMN/main.jpg" 
                 alt="Engineer calibrating equipment in a professional lab" 
