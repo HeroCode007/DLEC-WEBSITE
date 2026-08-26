@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin/certificates
 
-Sitemap: https://dlec.com/sitemap.xml
+Sitemap: https://directlineeng.com/sitemap.xml

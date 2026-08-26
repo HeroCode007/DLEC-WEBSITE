@@ -50,7 +50,8 @@ const TemperatureCalibration = () => {
           name="description"
           content="Get ISO certified temperature calibration services in Lahore. Accurate calibration for thermocouples, medical freezers, autoclaves, and data loggers by DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/temperature-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/temperature-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/temperature-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-white py-20">

@@ -64,7 +64,8 @@ const FlowEquipmentCalibration = () => {
           name="description"
           content="Expert flow meter calibration services in Lahore, Pakistan. Fast on-site and in-lab water and fluid sensor calibration by DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/flow-equipment-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/flow-equipment-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/flow-equipment-calibration" />
       </Helmet>
       {/* Hero Section */}
       <motion.section

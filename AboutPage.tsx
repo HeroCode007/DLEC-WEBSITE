@@ -62,7 +62,8 @@ const CustomerCentricApproach = () => {
           name="description"
           content="Direct Line Engineering Corporation (DLEC) is a premier proactive calibration vendor in Lahore. Serving industrial and laboratory clients across Pakistan with traceable, certified testing."
         />
-        <link rel="canonical" href="https://dlec.com/about" />
+        <link rel="canonical" href="https://directlineeng.com/about" />
+        <meta property="og:url" content="https://directlineeng.com/about" />
       </Helmet>
       <motion.section 
         className="pt-32 pb-20 bg-gray-50"

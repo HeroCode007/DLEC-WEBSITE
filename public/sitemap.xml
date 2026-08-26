@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url>
-    <loc>https://dlec.com/</loc>
+    <loc>https://directlineeng.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://dlec.com/about</loc>
+    <loc>https://directlineeng.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/verify-certificate</loc>
+    <loc>https://directlineeng.com/certificate</loc>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dlec.com/contact</loc>
+    <loc>https://directlineeng.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <!-- Calibration Service Pages -->
   <url>
-    <loc>https://dlec.com/services/temperature-calibration</loc>
+    <loc>https://directlineeng.com/services/temperature-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/line-length-calibration</loc>
+    <loc>https://directlineeng.com/services/line-length-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/weighing-scales-calibration</loc>
+    <loc>https://directlineeng.com/services/weighing-scales-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/sound-level-calibration</loc>
+    <loc>https://directlineeng.com/services/sound-level-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/light-lux-calibration</loc>
+    <loc>https://directlineeng.com/services/light-lux-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/flow-equipment-calibration</loc>
+    <loc>https://directlineeng.com/services/flow-equipment-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/electrical-test-calibration</loc>
+    <loc>https://directlineeng.com/services/electrical-test-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/force-calibration</loc>
+    <loc>https://directlineeng.com/services/force-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/construction-calibration</loc>
+    <loc>https://directlineeng.com/services/construction-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dlec.com/services/line-length-dimensions-calibration</loc>
+    <loc>https://directlineeng.com/services/line-length-dimensions-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>

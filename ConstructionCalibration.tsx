@@ -50,7 +50,8 @@ const GlasswareCalibration = () => {
           name="description"
           content="Precise laboratory glassware, pipette, and volumetric instrument calibration in Lahore, Pakistan. Stay audit-ready with fully traceable certificates by DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/construction-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/construction-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/construction-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-indigo-50 to-white py-20 min-h-screen">

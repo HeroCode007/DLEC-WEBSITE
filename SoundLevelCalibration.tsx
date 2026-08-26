@@ -52,7 +52,8 @@ const SoundLevelCalibration = () => {
           name="description"
           content="Professional sound and noise meter calibration in Lahore. Ensure occupational safety and pak-EPA environmental noise regulations compliance with DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/sound-level-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/sound-level-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/sound-level-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-orange-50 to-white py-20">

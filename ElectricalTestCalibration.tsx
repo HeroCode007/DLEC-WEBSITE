@@ -50,7 +50,8 @@ const ElectricalTestCalibration = () => {
           name="description"
           content="Get multimeters, clamp meters, and electrical testers calibrated in Lahore, Pakistan. Fast, traceable ISO compliance electrical testing services by DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/electrical-test-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/electrical-test-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/electrical-test-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-indigo-50 to-white py-16">

@@ -59,7 +59,8 @@ const LightLuxCalibration = () => {
           name="description"
           content="Certified lux meter and light sensor calibration in Lahore. Precise photometric and illuminance testing for safety and quality compliance by DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/light-lux-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/light-lux-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/light-lux-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-yellow-50 to-white py-20">

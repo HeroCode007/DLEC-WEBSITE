@@ -42,7 +42,8 @@ const PressureCalibration = () => {
           name="description"
           content="Traceable pressure & manometer calibration services in Lahore, Pakistan. Maintain accuracy in industrial operations with fast turnaround by DLEC."
         />
-        <link rel="canonical" href="https://dlec.com/services/pressure-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/line-length-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/line-length-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 to-white py-20">

@@ -24,7 +24,8 @@ const ContactPage = () => {
           name="description"
           content="Contact DLEC at our Lahore office on College Road to schedule on-site or laboratory calibration services. Phone: 0321-4182021. Fast, traceable calibration services."
         />
-        <link rel="canonical" href="https://dlec.com/contact" />
+        <link rel="canonical" href="https://directlineeng.com/contact" />
+        <meta property="og:url" content="https://directlineeng.com/contact" />
       </Helmet>
 
       {/* Hero Section */}

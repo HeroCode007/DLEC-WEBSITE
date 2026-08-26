@@ -13,7 +13,8 @@ const LineLengthCalibrationPage = () => {
           name="description"
           content="Precise dimensional calibration in Lahore for micrometers, vernier calipers, rulers, tape measures, and height gauges by DLEC. High-accuracy measurement assurance."
         />
-        <link rel="canonical" href="https://dlec.com/services/line-length-dimensions-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/line-length-dimensions-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/line-length-dimensions-calibration" />
       </Helmet>
 
       {/* Hero Section */}

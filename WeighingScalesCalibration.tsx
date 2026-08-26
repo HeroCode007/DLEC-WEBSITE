@@ -42,7 +42,8 @@ const WeighingScalesCalibration = () => {
           name="description"
           content="ISO certified industrial scale & laboratory balance calibration in Lahore. Fast, traceable weights and balances testing to ensure measurement accuracy."
         />
-        <link rel="canonical" href="https://dlec.com/services/weighing-scales-calibration" />
+        <link rel="canonical" href="https://directlineeng.com/services/weighing-scales-calibration" />
+        <meta property="og:url" content="https://directlineeng.com/services/weighing-scales-calibration" />
       </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-purple-50 to-white py-20">

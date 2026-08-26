@@ -92,7 +92,8 @@ path: "/services/construction-calibration"
           name="description"
           content="Looking for professional calibration services in Lahore? DLEC is an ISO 9001:2015 certified company providing high-accuracy temperature, scale, pressure, electrical, and force calibration. On-site & lab services."
         />
-        <link rel="canonical" href="https://dlec.com/" />
+        <link rel="canonical" href="https://directlineeng.com/" />
+        <meta property="og:url" content="https://directlineeng.com/" />
       </Helmet>
 
       {/* Hero Section */}
