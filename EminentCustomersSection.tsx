@@ -114,7 +114,7 @@ export const EminentCustomersSection: React.FC<{ showGridOnly?: boolean }> = ({ 
                   <li key={`m1-${idx}`} className="flex-shrink-0">
                     <div className="bg-white/5 hover:bg-white/15 border border-white/10 hover:border-blue-400/40 rounded-xl px-5 py-3.5 transition-all duration-300 backdrop-blur-md flex items-center gap-3 group shadow-lg">
                       {client.logoUrl ? (
-                        <div className="w-12 h-8 rounded-lg bg-white p-1 flex items-center justify-center shadow-inner overflow-hidden">
+                        <div className="w-14 h-9 rounded-lg bg-white p-1 flex items-center justify-center shadow-inner overflow-hidden">
                           <img src={client.logoUrl} alt={client.name} className="max-h-full max-w-full object-contain" />
                         </div>
                       ) : (
@@ -135,7 +135,7 @@ export const EminentCustomersSection: React.FC<{ showGridOnly?: boolean }> = ({ 
                   <li key={`m2-${idx}`} className="flex-shrink-0">
                     <div className="bg-white/5 hover:bg-white/15 border border-white/10 hover:border-blue-400/40 rounded-xl px-5 py-3.5 transition-all duration-300 backdrop-blur-md flex items-center gap-3 group shadow-lg">
                       {client.logoUrl ? (
-                        <div className="w-12 h-8 rounded-lg bg-white p-1 flex items-center justify-center shadow-inner overflow-hidden">
+                        <div className="w-14 h-9 rounded-lg bg-white p-1 flex items-center justify-center shadow-inner overflow-hidden">
                           <img src={client.logoUrl} alt={client.name} className="max-h-full max-w-full object-contain" />
                         </div>
                       ) : (
@@ -213,7 +213,11 @@ export const EminentCustomersSection: React.FC<{ showGridOnly?: boolean }> = ({ 
 
                 {client.logoUrl ? (
                   <div className="bg-white rounded-xl p-3 mb-4 h-16 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
-                    <img src={client.logoUrl} alt={client.name} className="max-h-full max-w-full object-contain" />
+                    <img
+                      src={client.logoUrl}
+                      alt={client.name}
+                      className="max-h-full max-w-full object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    />
                   </div>
                 ) : null}
 
