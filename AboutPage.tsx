@@ -1,7 +1,6 @@
 import { CheckCircle, RefreshCw, CalendarCheck2, PhoneCall, ClipboardList, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import EminentCustomersSection from './EminentCustomersSection';
 
 const features = [
   {
@@ -141,9 +140,6 @@ const CustomerCentricApproach = () => {
         </motion.div>
       </div>
       </motion.section>
-
-      {/* Eminent Corporate Customers & Partners Grid */}
-      <EminentCustomersSection showGridOnly={true} />
     </>
   );
 };

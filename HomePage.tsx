@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import EminentCustomersSection from './EminentCustomersSection';
 import { Helmet } from 'react-helmet';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -182,9 +181,6 @@ path: "/services/construction-calibration"
           </div>
         </div>
       </section>
-
-      {/* Eminent Customers & Corporate Partners Showcase */}
-      <EminentCustomersSection />
 
       {/* What Sets DLEC Apart Section */}
 <section className="py-20 bg-white">
