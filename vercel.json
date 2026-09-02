@@ -1,9 +1,4 @@
 {
-  "build": {
-    "env": {
-      "VITE_PUBLIC_ONLY": "true"
-    }
-  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
